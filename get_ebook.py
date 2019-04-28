@@ -18,7 +18,6 @@ bookid = input('输入书籍编号:\n')
 if bookid == '':
     sys.exit()
 bookname = get_bookname(bookid, baseurl, headers)
-bookdir = mkdir_bookdir(bookid,bookname)
 print(bookname)
 links = get_linklist(bookid, baseurl, headers)
 cpt = len(links)
@@ -27,6 +26,7 @@ foi = input('1: 单个文件;2:分章节存储\n')
 if foi == '1':
     mksinglefile(bookname,bookid,baseurl,headers,links)
 if foi == '2':
+    bookdir = mkdir_bookdir(bookid,bookname)
     for i in range(len(links)):
         title = get_chaptername(baseurl, headers, links[i])
         text = get_text(baseurl, headers, links[i])
