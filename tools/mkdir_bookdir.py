@@ -6,7 +6,8 @@ def mkdir_bookdir(bookid, bookname):
     bookid = str(bookid)
     if platform.system()=='Windows':
         bookdir = 'e:\\books\\' + p * (6 - len(bookid)) + bookid
-    if platform.system()=='Linux':
+#    if platform.system()=='Linux':
+    else:
         bookdir = 'done/' + p * (6 - len(bookid)) + bookid
     bookdir = bookdir + bookname
     if os.path.exists(bookdir):
