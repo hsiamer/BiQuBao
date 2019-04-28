@@ -37,7 +37,7 @@ if foi == '1':
     if o=='1':
         passwd = getpass('发件箱密码:')
         sendmail(bookname,bookdir,passwd)
-    if o!='2':
+    if o!='1':
         sys.exit()
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
