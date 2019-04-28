@@ -12,7 +12,6 @@ def mksinglefile(bookname, bookid, baseurl, headers, links):
         bookd = 'e:\\books\\' + bookname + '.txt'
     else:
         bookd = 'done/' + bookname + '.txt'
-    print(bookd)
     with open(bookd, 'w+', encoding='utf-8') as f:
         f.write('')
         f.close()

@@ -8,6 +8,8 @@ from tools.get_text import get_text
 from tools.mkdir_bookdir import mkdir_bookdir
 from tools.mkfile import mkfile
 from tools.mksinglefile import mksinglefile
+from tools.sendmail import sendmail
+
 
 baseurl = 'https://www.biqubao.com'
 headers = {
@@ -23,8 +25,13 @@ links = get_linklist(bookid, baseurl, headers)
 cpt = len(links)
 print('章节总数:',cpt)
 foi = input('1: 单个文件;2:分章节存储\n')
+if foi != '1' and foi != '2':
+    print('输入错误')
+    sys.exit()
 if foi == '1':
     mksinglefile(bookname,bookid,baseurl,headers,links)
+    bookdir = '0' * (6 - len(bookid)) + bookid + ' - ' + bookname + '.txt'
+    sendmail(bookname,bookdir)
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     for i in range(len(links)):
@@ -34,3 +41,5 @@ if foi == '2':
         mkfile(i+1,bookdir,title,text)
         time.sleep(1)
         print('\t\t\t\t\t(',i+1,'/',cpt,')')
+
+
