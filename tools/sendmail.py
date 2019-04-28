@@ -1,16 +1,14 @@
 import smtplib
-import getpass
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def sendmail(title,afile):
+def sendmail(title,afile,passwd):
     sender = 'mrxia20170404@163.com'
     receiver = '815006096@qq.com'
     smtpserver = 'smtp.163.com'
     username = 'mrxia20170404'
-    password = getpass.getpass('发件箱密码:')
 
     # 创建一个带附件的实例
     message = MIMEMultipart()
@@ -23,7 +21,7 @@ def sendmail(title,afile):
     message.attach(MIMEText(text, 'plain', 'utf-8'))
 
     # 构造附件
-    files = 'done/' + afile
+    files = '/root/git/done/' + afile
     att1 = MIMEText(open(files, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
 #    att1["Content-Disposition"] = 'attachment;filename=%s' % afile.encode('utf-8')
@@ -34,7 +32,7 @@ def sendmail(title,afile):
     print('连接到邮件服务器')
     smtpObj.connect(smtpserver)
     print('登录中...')
-    smtpObj.login(username, password)
+    smtpObj.login(username, passwd)
     print('发送中...')
     smtpObj.sendmail(sender, receiver, message.as_string())
     print("邮件发送成功")

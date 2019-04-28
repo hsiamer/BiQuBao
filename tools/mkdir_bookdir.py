@@ -8,7 +8,7 @@ def mkdir_bookdir(bookid, bookname):
         bookdir = 'e:\\books\\' + p * (6 - len(bookid)) + bookid
 #    if platform.system()=='Linux':
     else:
-        bookdir = 'done/' + p * (6 - len(bookid)) + bookid
+        bookdir = '/root/gitdone/' + p * (6 - len(bookid)) + bookid
     bookdir = bookdir + bookname
     if os.path.exists(bookdir):
         shutil.rmtree(bookdir)

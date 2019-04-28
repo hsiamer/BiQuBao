@@ -11,7 +11,7 @@ def mksinglefile(bookname, bookid, baseurl, headers, links):
     if platform.system() == 'Windows':
         bookd = 'e:\\books\\' + bookname + '.txt'
     else:
-        bookd = 'done/' + bookname + '.txt'
+        bookd = '/root/git/done/' + bookname + '.txt'
     with open(bookd, 'w+', encoding='utf-8') as f:
         f.write('')
         f.close()

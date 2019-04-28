@@ -1,5 +1,6 @@
 import sys
 import time
+from getpass import getpass
 
 from tools.get_bookname import get_bookname
 from tools.get_chaptername import get_chaptername
@@ -29,9 +30,10 @@ if foi != '1' and foi != '2':
     print('输入错误')
     sys.exit()
 if foi == '1':
+    passwd = getpass('发件箱密码:')
     mksinglefile(bookname,bookid,baseurl,headers,links)
     bookdir = '0' * (6 - len(bookid)) + bookid + ' - ' + bookname + '.txt'
-    sendmail(bookname,bookdir)
+    sendmail(bookname,bookdir,passwd)
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     for i in range(len(links)):
