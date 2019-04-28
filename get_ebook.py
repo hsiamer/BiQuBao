@@ -7,6 +7,7 @@ from tools.get_linklist import get_linklist
 from tools.get_text import get_text
 from tools.mkdir_bookdir import mkdir_bookdir
 from tools.mkfile import mkfile
+from tools.mksinglefile import mksinglefile
 
 baseurl = 'https://www.biqubao.com'
 headers = {
@@ -22,10 +23,14 @@ print(bookname)
 links = get_linklist(bookid, baseurl, headers)
 cpt = len(links)
 print('章节总数:',cpt)
-for i in range(len(links)):
-    title = get_chaptername(baseurl, headers, links[i])
-    text = get_text(baseurl, headers, links[i])
-    print(title)
-    mkfile(i+1,bookdir,title,text)
-    time.sleep(1)
-    print('\t\t\t\t\t(',i+1,'/',cpt,')')
+foi = input('1: 单个文件;2:分章节存储\n')
+if foi == '1':
+    mksinglefile(bookname,bookid,baseurl,headers,links)
+if foi == '2':
+    for i in range(len(links)):
+        title = get_chaptername(baseurl, headers, links[i])
+        text = get_text(baseurl, headers, links[i])
+        print(title)
+        mkfile(i+1,bookdir,title,text)
+        time.sleep(1)
+        print('\t\t\t\t\t(',i+1,'/',cpt,')')
