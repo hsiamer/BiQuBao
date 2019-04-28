@@ -33,7 +33,12 @@ if foi == '1':
     passwd = getpass('发件箱密码:')
     mksinglefile(bookname,bookid,baseurl,headers,links)
     bookdir = '0' * (6 - len(bookid)) + bookid + ' - ' + bookname + '.txt'
-    sendmail(bookname,bookdir,passwd)
+    o = input('是否要将下载文件发送到邮箱(1:是;2:否):\n')
+    if o=='1':
+        passwd = getpass('发件箱密码:')
+        sendmail(bookname,bookdir,passwd)
+    if o!='2':
+        sys.exit()
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     for i in range(len(links)):
