@@ -5,11 +5,10 @@ def mkdir_bookdir(bookid, bookname):
     p = '0'
     bookid = str(bookid)
     if platform.system()=='Windows':
-        bookdir = 'e:\\books\\' + p * (6 - len(bookid)) + bookid
+        bookdir = 'e:\\books\\' + p * (6 - len(bookid)) + bookid + bookname
 #    if platform.system()=='Linux':
     else:
-        bookdir = '/root/gitdone/' + p * (6 - len(bookid)) + bookid
-    bookdir = bookdir + bookname
+        bookdir = '/root/git/hsiamer.github.io/novels/' + p * (6 - len(bookid)) + bookid + bookname
     if os.path.exists(bookdir):
         shutil.rmtree(bookdir)
         os.mkdir(bookdir)

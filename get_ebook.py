@@ -19,13 +19,16 @@ headers = {
 
 bookid = input('输入书籍编号:\n')
 if bookid == '':
+    print('退出程序')
     sys.exit()
 bookname = get_bookname(bookid, baseurl, headers)
-print(bookname)
 links = get_linklist(bookid, baseurl, headers)
 cpt = len(links)
-print('章节总数:',cpt)
-foi = input('1: 单个文件;2:分章节存储\n')
+print(bookname,'章节总数:',cpt)
+foi = input('1: 单个文件;2:分章节存储;Enter:退出程序\n')
+if foi == '':
+    print('退出程序')
+    sys.exit()
 if foi != '1' and foi != '2':
     print('输入错误')
     sys.exit()
