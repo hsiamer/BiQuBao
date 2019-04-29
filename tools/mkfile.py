@@ -12,3 +12,4 @@ def mkfile(chapterno,bookdir,chaptername,text):
     with open(bookd,'w+',encoding = 'utf-8') as f:
         f.write(text)
         f.close()
+    return bookd

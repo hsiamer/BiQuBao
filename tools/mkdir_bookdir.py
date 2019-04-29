@@ -5,7 +5,7 @@ def mkdir_bookdir(bookid, bookname):
     p = '0'
     bookid = str(bookid)
     if platform.system()=='Windows':
-        bookdir = 'e:\\books\\' + p * (6 - len(bookid)) + bookid + bookname
+        bookdir = 'E:\\PyCharmProjects\\hsiamer.github.io\\novels\\' + p * (6 - len(bookid)) + bookid + bookname
 #    if platform.system()=='Linux':
     else:
         bookdir = '/root/git/hsiamer.github.io/novels/' + p * (6 - len(bookid)) + bookid + bookname

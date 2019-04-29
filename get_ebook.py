@@ -1,4 +1,4 @@
-import sys
+import sys,platform
 import time
 from getpass import getpass
 
@@ -10,6 +10,8 @@ from tools.mkdir_bookdir import mkdir_bookdir
 from tools.mkfile import mkfile
 from tools.mksinglefile import mksinglefile
 from tools.sendmail import sendmail
+from mkpage.mknovelpage import  mknovelpage
+from mkpage.fillchapterlist import filechapter
 
 
 baseurl = 'https://www.biqubao.com'
@@ -44,11 +46,13 @@ if foi == '1':
         sys.exit()
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
+    chapterpage = mknovelpage(bookid,bookname)
     for i in range(len(links)):
         title = get_chaptername(baseurl, headers, links[i])
         text = get_text(baseurl, headers, links[i])
         print(title)
-        mkfile(i+1,bookdir,title,text)
+        chapterdir = mkfile(i+1,bookdir,title,text)
+        filechapter(chapterpage,title,chapterdir)
         time.sleep(1)
         print('\t\t\t\t\t(',i+1,'/',cpt,')')
 
