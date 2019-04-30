@@ -10,8 +10,10 @@ def mknovelpage(bookid,bookname):
         bookd = '../hsiamer.github.io/novels/' + bookid + '.html'
         booklink = 'novels/' + bookid + '.html'
         booklist = '../hsiamer.github.io/novellist.html'
+    title = '<head><title>' + bookname + '</title></head>'
     with open(bookd,'w+',encoding='utf-8') as f: # 创建书籍子页面,既章节列表页面
         str1 = '<h1>' + bookname + '</h1>'
+        f.write(title)
         f.write(str1)
         f.write('\n\n')
         f.close()
