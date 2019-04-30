@@ -47,8 +47,8 @@ if foi == '1':
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     chapterpage = mknovelpage(bookid,bookname)
-    for i in range(6): # 测试用例
-#    for i in range(len(links)):
+#    for i in range(6): # 测试用例
+    for i in range(len(links)):
         title = get_chaptername(baseurl, headers, links[i])
         text = get_text(baseurl, headers, links[i])
         print(title)
