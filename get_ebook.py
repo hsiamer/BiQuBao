@@ -35,26 +35,24 @@ if foi != '1' and foi != '2':
     print('输入错误')
     sys.exit()
 if foi == '1':
-    passwd = getpass('发件箱密码:')
     mksinglefile(bookname,bookid,baseurl,headers,links)
     bookdir = '0' * (6 - len(bookid)) + bookid + ' - ' + bookname + '.txt'
     o = input('是否要将下载文件发送到邮箱(1:是;2:否):\n')
     if o=='1':
         passwd = getpass('发件箱密码:')
-        sendmail(bookname,bookdir,passwd)
+        emailto = input('输入接收文件的邮箱:\n')
+        sendmail(bookname,bookdir,passwd,emailto)
     if o!='1':
         sys.exit()
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     chapterpage = mknovelpage(bookid,bookname)
-#    for i in range(6): # 测试用例
     for i in range(len(links)):
         title = get_chaptername(baseurl, headers, links[i])
         text = get_text(baseurl, headers, links[i])
         print(title)
         chapterdir = mkfile(i+1,bookdir,title,text)
         filechapter(bookname,chapterpage,title,bookid,i+1)
-        time.sleep(1)
         print('\t\t\t\t\t(',i+1,'/',cpt,')')
-
+        time.sleep(1)
 

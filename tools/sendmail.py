@@ -4,9 +4,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def sendmail(title,afile,passwd):
+def sendmail(title,afile,passwd,receiver):
     sender = 'mrxia20170404@163.com'
-    receiver = '815006096@qq.com'
+#    receiver = '815006096@qq.com'
     smtpserver = 'smtp.163.com'
     username = 'mrxia20170404'
 
@@ -21,7 +21,7 @@ def sendmail(title,afile,passwd):
     message.attach(MIMEText(text, 'plain', 'utf-8'))
 
     # 构造附件
-    files = '/root/git/done/' + afile
+    files = '/root/git/hsiamer.github.io/novels/' + afile
     att1 = MIMEText(open(files, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
 #    att1["Content-Disposition"] = 'attachment;filename=%s' % afile.encode('utf-8')

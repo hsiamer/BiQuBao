@@ -9,6 +9,6 @@ def get_text(baseurl: object, headers: object, link: object) -> object:
     s = etree.HTML(html)
     texts = s.xpath('//*[@id="content"]/text()')
     for text in texts:
-        fulltext = fulltext + text.strip() + '<br>'
+        fulltext = fulltext + text.strip() + '\n'
     fulltext = fulltext + '\n'
     return fulltext
